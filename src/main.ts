@@ -3,8 +3,6 @@ import App from './App.vue'
 import './index.css'
 import home from './views/home.vue'
 import Doc from './views/Doc.vue'
-
-
 // 引入哈希模式路由对象
 import { createWebHashHistory, createRouter } from 'vue-router'
 const history = createWebHashHistory()
