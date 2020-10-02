@@ -1,6 +1,6 @@
 <template>
 <div class="topnav">
-    <router-link to="/" class="logo" @click="toggleMenu">
+    <router-link to="/" class="logo">
         logo
     </router-link>
     <ul class="menu">
