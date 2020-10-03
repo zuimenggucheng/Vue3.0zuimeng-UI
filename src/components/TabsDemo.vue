@@ -26,9 +26,7 @@
 
 <script lang="ts">
 export default {
-    setup() {
-
-    }
+    setup(props, context) {}
 
 }
 </script>
