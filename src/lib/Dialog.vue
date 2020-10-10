@@ -53,8 +53,6 @@ export default {
             if (newVlaue) {
                 const dialog = document.getElementsByClassName('zuimeng-dialog')[0]
                 dialog.style.width = this.width + 'px'
-                // const dialog = document.getElementsByClassName('zuimeng-dialog')[0]
-                // dialog.style.width = 500 + 'px'
             }
         }
     },
