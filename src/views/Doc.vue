@@ -1,8 +1,20 @@
 <template>
 <div class="layout">
-    <Topnav />
+    <Topnav toggleMenuButtonVisible class="nav" />
     <div class="content">
         <aside v-if="menuVisible">
+            <h2>文档</h2>
+            <ol>
+                <li>
+                    <router-link to="/doc/intro">介绍</router-link>
+                </li>
+                <li>
+                    <router-link to="/doc/install">安装</router-link>
+                </li>
+                <li>
+                    <router-link to="/doc/get-started">开始使用</router-link>
+                </li>
+            </ol>
             <h2>组件列表</h2>
             <ol>
                 <li>
@@ -40,7 +52,6 @@ export default {
         // 从上代组件中获取menuVisible的值
         const menuVisible = inject < Ref < boolean >> ("menuVisible"); // get
         // 此处就是js可以随意使用js语法
-        console.log(menuVisible)
         return {
             menuVisible
         }
@@ -50,6 +61,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$aside-index:10;
+
 .layout {
     display: flex;
     flex-direction: column;
@@ -63,6 +76,7 @@ export default {
         flex-grow: 1;
         padding-top: 60px;
         padding-left: 156px;
+        z-index: 10;
 
         @media (max-width: 500px) {
             padding-left: 0;
@@ -87,12 +101,12 @@ export default {
 aside {
     background: lightblue;
     width: 150px;
-    padding: 16px;
     position: fixed;
     top: 0;
     left: 0;
     padding-top: 70px;
     height: 100%;
+    z-index: $aside-index;
 
     >h2 {
         margin-bottom: 4px;
@@ -100,7 +114,15 @@ aside {
 
     >ol {
         >li {
-            padding: 4px 0;
+            >a {
+                display: block;
+                padding: 4px 16px;
+                text-decoration: none;
+            }
+
+            .router-link-active {
+                background: white;
+            }
         }
     }
 }

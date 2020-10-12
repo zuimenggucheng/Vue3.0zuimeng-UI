@@ -1,13 +1,21 @@
 <template>
 <div class="topnav">
     <router-link to="/" class="logo">
-        logo
+        <svg>
+            <use xlink:href="#icon-zui"></use>
+        </svg>
+        <svg>
+            <use xlink:href="#icon-meng"></use>
+        </svg>
     </router-link>
     <ul class="menu">
         <li>
             <router-link to="/doc">文档</router-link>
         </li>
     </ul>
+    <svg v-if="toggleMenuButtonVisible" class="toggleAside" @click="toggleMenu">
+        <use xlink:href="#icon-menu"></use>
+    </svg>
 </div>
 </template>
 
@@ -17,13 +25,19 @@ import {
     Ref
 } from "vue";
 export default {
+    props: {
+        toggleMenuButtonVisible: {
+            type: Boolean,
+            default: false
+        }
+    },
+
     setup() {
         //从上代组件中中获取到menuVisible的值
         const menuVisible = inject < Ref < boolean >> ("menuVisible"); // get
         const toggleMenu = () => {
             menuVisible.value = !menuVisible.value
         }
-        console.log(menuVisible.value)
         return {
             // vue3.0新特性声明的函数需要导出
             toggleMenu,
@@ -45,7 +59,7 @@ $color: #007974;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 20;
     justify-content: center;
     align-items: center;
 

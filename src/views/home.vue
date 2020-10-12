@@ -9,8 +9,31 @@
             <router-link to="/doc">开始</router-link>
         </p>
     </div>
-    <div class="features">
-    </div>
+</div>
+<div class="features">
+    <ul>
+        <li>
+            <svg>
+                <use xlink:href="#icon-vue"></use>
+            </svg>
+            <h3>基于 Vue 3</h3>
+            <p>骄傲地使用了 Vue 3 Composition API</p>
+        </li>
+        <li>
+            <svg>
+                <use xlink:href="#icon-TS"></use>
+            </svg>
+            <h3>基于 TypeScript </h3>
+            <p>源代码采用 TypeScript 书写</p>
+        </li>
+        <li>
+            <svg>
+                <use xlink:href="#icon-shu"></use>
+            </svg>
+            <h3>代码易读</h3>
+            <p>每个组件的源代码都极其简洁</p>
+        </li>
+    </ul>
 </div>
 </template>
 
@@ -35,14 +58,26 @@ $color: #007974;
 
 .features {
     margin: 64px auto;
-    width: 400px;
+    padding: 0 16px;
 
     @media (min-width: 800px) {
         width: 800px;
+
+        >ul {
+            >li {
+                width: 50%;
+            }
+        }
     }
 
     @media (min-width: 1200px) {
         width: 1200px;
+
+        >ul {
+            >li {
+                width: 33.3333%;
+            }
+        }
     }
 
     >ul {
@@ -50,7 +85,6 @@ $color: #007974;
         flex-wrap: wrap;
 
         >li {
-            width: 400px;
             margin: 16px 0;
             display: grid;
             justify-content: start;
