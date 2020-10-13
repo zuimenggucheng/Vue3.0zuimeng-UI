@@ -25,6 +25,7 @@ export default {
         rotuer.afterEach(() => {
             if (width <= 500) {
                 menuVisible.value = false;
+                console.log(menuVisible)
             }
         })
     }
