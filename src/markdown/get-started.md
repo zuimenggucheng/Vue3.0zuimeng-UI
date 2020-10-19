@@ -4,7 +4,7 @@
 然后在你的代码中写入下面的代码
 
 ```
-import {Button, Tabs, Switch, Dialog} from "zuimeng-ui"
+import {zuiMengSwitch, zuiMengButton, zuiMengTabs, zuiMengTab,zuiMengDialog} from "zuimeng-ui"
 ```
 
 就可以使用我提供的组件了。
@@ -16,13 +16,13 @@ import {Button, Tabs, Switch, Dialog} from "zuimeng-ui"
 ```
 <template>
   <div>
-    <Button>按钮</Button>
+    <zuiMengButton>按钮</zuiMengButton>
   </div>
 </template>
 <script>
-import {Button, Tabs, Switch, Dialog} from "king-ui"
+import {zuiMengSwitch, zuiMengButton, zuiMengTabs, zuiMengTab,zuiMengDialog} from "zuimeng-ui"
 export default {
-  components: {Button}
+  components: {zuiMengButton}
 }
 </script>
 ```

@@ -3,17 +3,19 @@
 </demo>
 <template>
 <div>
-  <Button>你好</Button>
-  <Button theme="link">你好</Button>
-  <Button theme="text">你好</Button>
+    <zuiMengButton>你好</zuiMengButton>
+    <zuiMengButton theme="link">你好</zuiMengButton>
+    <zuiMengButton theme="text">你好</zuiMengButton>
 </div>
 </template>
 
 <script lang="ts">
-import Button from "../lib/Button.vue";
+import {
+    zuiMengButton
+} from "../lib/index";
 export default {
-  components: {
-    Button
-  }
+    components: {
+        zuiMengButton
+    }
 }
 </script>

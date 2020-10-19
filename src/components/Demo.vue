@@ -5,7 +5,9 @@
         <component :is="component" />
     </div>
     <div class="demo-actions">
-        <Button @click="toggleCode">查看代码</Button>
+        <zuiMengButton @click="toggleCode" v-if="!codeVisible">查看代码</zuiMengButton>
+        <zuiMengButton @click="toggleCode" v-else>隐藏代码</zuiMengButton>
+
     </div>
     <div class="demo-code" v-if="codeVisible">
         <pre class="language-html" v-html="html" />
@@ -15,7 +17,9 @@
 </template>
 
 <script lang="ts">
-import Button from '../lib/Button.vue'
+import {
+    zuiMengButton
+} from "../lib/index";
 import 'prismjs';
 // import 'prismjs/themes/prism.css'
 import {
@@ -25,22 +29,26 @@ import {
 const Prism = (window as any).Prism
 export default {
     components: {
-        Button
+        zuiMengButton
     },
     props: {
         component: Object
     },
     setup(props) {
+        const buttonShow: Boolean = true
         const html = computed(() => {
             return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html')
         })
-        const toggleCode = () => codeVisible.value = !codeVisible.value
+        const toggleCode = () => {
+            codeVisible.value = !codeVisible.value
+        }
         const codeVisible = ref(false)
         return {
             Prism,
             html,
             codeVisible,
-            toggleCode
+            toggleCode,
+            buttonShow
         }
     }
 }

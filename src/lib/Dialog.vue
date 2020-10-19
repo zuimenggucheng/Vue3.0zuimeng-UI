@@ -51,13 +51,13 @@ export default {
     watch: {
         visible: function (newVlaue, oldValue) {
             if (newVlaue) {
-                const dialog = document.getElementsByClassName('zuimeng-dialog')[0]
-                dialog.style.width = this.width + 'px'
+                // const dialog = document.getElementsByClassName('zuimeng-dialog')
+                // console.log(this.dialog)
+                // this.dialog.style.width = this.width + 'px'
             }
         }
     },
     setup(props, context) {
-
         const close = () => {
             context.emit('update:visible', false)
         }
@@ -72,7 +72,6 @@ export default {
             }
         }
         const cancel = () => {
-            console.log(1111)
             // 新写法如果cancel函数存在则调用不存在就不调用
             props.cancel?.()
             close()
@@ -81,7 +80,7 @@ export default {
             close,
             cancel,
             save,
-            onClickOverlay
+            onClickOverlay,
         }
     },
 

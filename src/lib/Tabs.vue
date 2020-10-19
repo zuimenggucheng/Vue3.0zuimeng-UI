@@ -35,7 +35,6 @@ export default {
         const indicator = ref < HTMLDivElement > (null)
         const container = ref < HTMLDivElement > (null)
         onMounted(() => {
-
             // vue3.0中新增的方法会监听引用的的依赖并在依赖改变时候调用此方法
             // 但是此方法在初始化的时候会在onMounted周期之前调用一次但是，此时dom节点并未挂载，需要留意
             watchEffect(() => {
@@ -53,15 +52,19 @@ export default {
                 } = selectedItem.value.getBoundingClientRect()
                 const left = left2 - left1
                 indicator.value.style.left = left + 'px'
+            }, {
+                flush: 'post'
             })
         })
         // 拿到子组件节点信息
         // context.slots.default是个函数调用之后会返回组件中子节点信息
         // 
         const defaults = context.slots.default()
+        console.log(defaults)
         // 直接用获取到的子组件的的type和引入的组件类型相比较
         defaults.forEach((tag) => {
-            if (tag.type !== zuiMengTab) {
+            //@ts-ignore
+            if (tag.type.name !== zuiMengTab.name) {
                 throw new Error('zuiMengTabs 子标签必须是 zuiMengTab')
             }
         })

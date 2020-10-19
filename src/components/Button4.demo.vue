@@ -2,16 +2,18 @@
 支持 disabled
 </demo>
 <template>
-<Button disabled>禁用按钮</Button>
-<Button theme="link" disabled>禁用链接按钮</Button>
-<Button theme="text" disabled>禁用按钮</Button>
+<zuiMengButton disabled>禁用按钮</zuiMengButton>
+<zuiMengButton theme="link" disabled>禁用链接按钮</zuiMengButton>
+<zuiMengButton theme="text" disabled>禁用按钮</zuiMengButton>
 </template>
 
 <script lang="ts">
-import Button from "../lib/Button.vue";
+import {
+    zuiMengButton
+} from "../lib/index";
 export default {
-  components: {
-    Button
-  }
+    components: {
+        zuiMengButton
+    }
 }
 </script>

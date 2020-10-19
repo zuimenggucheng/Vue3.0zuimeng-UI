@@ -3,39 +3,41 @@
 </demo>
 <template>
 <div>
-  <Button @click="showDialog">打开对话框</Button>
+    <zuiMengButton @click="showDialog">打开对话框</zuiMengButton>
 </div>
 </template>
 
 <script lang="ts">
-import Button from '../lib/Button.vue'
 import {
-  ref,
-  h
+    zuiMengButton
+} from '../lib/index'
+import {
+    ref,
+    h
 } from 'vue'
 import {
-  openDialog
-} from '../lib/openDialog'
+    openZuiMengDialog
+} from '../lib/index'
 export default {
-  components: {
-    Button
-  },
-  setup() {
-    const showDialog = () => {
-      openDialog({
-        title: h('strong', {}, '标题'),
-        content: '你好',
-        ok() {
-          console.log('ok')
-        },
-        cancel() {
-          console.log('cancel')
+    components: {
+        zuiMengButton
+    },
+    setup() {
+        const showDialog = () => {
+            openZuiMengDialog({
+                title: h('strong', {}, '标题'),
+                content: '你好',
+                ok() {
+                    console.log('ok')
+                },
+                cancel() {
+                    console.log('cancel')
+                }
+            })
         }
-      })
+        return {
+            showDialog
+        }
     }
-    return {
-      showDialog
-    }
-  }
 }
 </script>

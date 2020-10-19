@@ -3,16 +3,18 @@
 </demo>
 <template>
 <div>
-  <Button loading>加载中</Button>
-  <Button>加载完毕</Button>
+    <zuiMengButton loading>加载中</zuiMengButton>
+    <zuiMengButton>加载完毕</zuiMengButton>
 </div>
 </template>
 
 <script lang="ts">
-import Button from "../lib/Button.vue";
+import {
+    zuiMengButton
+} from "../lib/index";
 export default {
-  components: {
-    Button
-  }
+    components: {
+        zuiMengButton
+    }
 }
 </script>
