@@ -60,7 +60,6 @@ export default {
         // context.slots.default是个函数调用之后会返回组件中子节点信息
         // 
         const defaults = context.slots.default()
-        console.log(defaults)
         // 直接用获取到的子组件的的type和引入的组件类型相比较
         defaults.forEach((tag) => {
             //@ts-ignore

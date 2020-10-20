@@ -45,15 +45,19 @@ export default {
         },
         width: {
             type: String,
-            default: 500
+            default: 50
         }
     },
     watch: {
         visible: function (newVlaue, oldValue) {
             if (newVlaue) {
-                // const dialog = document.getElementsByClassName('zuimeng-dialog')
-                // console.log(this.dialog)
+                this.$nextTick(() => {
+                    const dialog = document.getElementsByClassName('zuimeng-dialog-wrapper')[0]
+                    dialog.style.width = this.width + '%'
+                })
+
                 // this.dialog.style.width = this.width + 'px'
+
             }
         }
     },
