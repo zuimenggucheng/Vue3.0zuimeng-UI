@@ -12,20 +12,28 @@
                     <slot name="content" />
                 </main>
                 <footer>
-                    <Button level="main" @click="save">保存</Button>
-                    <Button @click="cancel">取消</Button>
+                    <zuiMengButton level="main" @click="saveClick">保存</zuiMengButton>
+                    <zuiMengButton @click="cancelClick">取消</zuiMengButton>
                 </footer>
             </div>
         </div>
     </Teleport>
 </template>
 </template>
-
-<script lang="ts">
-import Button from '../lib/Button.vue'
+<script lang="ts" setup='props,context' >
+import { SetupContext } from 'vue';
+import {zuiMengButton} from './index'
+declare const props: {
+  visible: boolean;
+  closeOnClickOverlay: boolean; 
+  save: () => boolean; 
+  cancel: () => void;
+  width:String
+}
+declare const context: SetupContext
 export default {
     components: {
-        Button
+        zuiMengButton
     },
     // 接收传递的参数
     props: {
@@ -55,40 +63,29 @@ export default {
                     const dialog = document.getElementsByClassName('zuimeng-dialog-wrapper')[0]
                     dialog.style.width = this.width + '%'
                 })
-
-                // this.dialog.style.width = this.width + 'px'
-
             }
         }
     },
-    setup(props, context) {
-        const close = () => {
+}
+    export const close = () => {
             context.emit('update:visible', false)
         }
-        const onClickOverlay = () => {
+    export const onClickOverlay = () => {
             if (props.closeOnClickOverlay) {
                 close()
             }
         }
-        const save = () => {
+    export const saveClick = () => {
             if (props.save?.() !== false) {
                 close()
             }
         }
-        const cancel = () => {
+    export const cancelClick = () => {
             // 新写法如果cancel函数存在则调用不存在就不调用
             props.cancel?.()
             close()
         }
-        return {
-            close,
-            cancel,
-            save,
-            onClickOverlay,
-        }
-    },
-
-}
+     
 </script>
 
 <style lang="scss">

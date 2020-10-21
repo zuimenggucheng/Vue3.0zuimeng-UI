@@ -4,24 +4,22 @@
 </button>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup='props,context'>
+import { ref, SetupContext } from "vue";
+// 这里定义
+declare const props: {value: boolean}
+declare const context: SetupContext
 export default {
     props: {
         value: Boolean
     },
-    setup(props, context) {
-        const toggle = () => {
+}
+export const toggle = () => {
             // context.emit等价于vue2.0中的this.$emit()
             // 在setup不能使用this.$emit()，需要在methods中使用
             // Vue3.0中可以淘汰掉methods，和date
             // Vue3.0中触发外部函数时，外部监听名为update：xxx
             context.emit('update:value', !props.value)
-        }
-        return {
-            toggle
-        }
-    },
-
 }
 </script>
 

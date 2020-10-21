@@ -4,7 +4,7 @@
 <template>
 <div>
     <zuiMengButton @click="toggle">打开对话框</zuiMengButton>
-    <zuiMengDialog v-model:visible="x" :closeOnClickOverlay="false" :ok="f1" :cancel="f2">
+    <zuiMengDialog v-model:visible="x" :closeOnClickOverlay="false" :save="f1" :cancel="f2">
         <template v-slot:content>
             <strong>hi</strong>
             <div>hi2</div>
@@ -40,7 +40,8 @@ export default {
         const f1 = () => {
             return false
         }
-        const f2 = () => {}
+        const f2 = () => {
+        }
         return {
             x,
             toggle,

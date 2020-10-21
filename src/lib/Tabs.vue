@@ -10,16 +10,18 @@
 </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup='props,context'>
 import zuiMengTab from './Tab.vue'
-
 import {
     computed,
     ref,
     onMounted,
     watchEffect,
-
+    SetupContext,
+    Component
 } from 'vue'
+declare const props: {selected: string}
+declare const context: SetupContext
 export default {
     components: {
         zuiMengTab
@@ -29,12 +31,13 @@ export default {
             type: String,
 
         }
-    },
-    setup(props, context) {
-        const selectedItem = ref < HTMLDivElement > (null)
-        const indicator = ref < HTMLDivElement > (null)
-        const container = ref < HTMLDivElement > (null)
-        onMounted(() => {
+    }
+}
+
+     export const selectedItem = ref < HTMLDivElement > (null)
+     export const indicator = ref < HTMLDivElement > (null)
+     export const container = ref < HTMLDivElement > (null)
+     onMounted(() => {
             // vue3.0中新增的方法会监听引用的的依赖并在依赖改变时候调用此方法
             // 但是此方法在初始化的时候会在onMounted周期之前调用一次但是，此时dom节点并未挂载，需要留意
             watchEffect(() => {
@@ -59,40 +62,31 @@ export default {
         // 拿到子组件节点信息
         // context.slots.default是个函数调用之后会返回组件中子节点信息
         // 
-        const defaults = context.slots.default()
+      export const defaults = context.slots.default()
         // 直接用获取到的子组件的的type和引入的组件类型相比较
-        defaults.forEach((tag) => {
+     defaults.forEach((tag) => {
             //@ts-ignore
             if (tag.type.name !== zuiMengTab.name) {
                 throw new Error('zuiMengTabs 子标签必须是 zuiMengTab')
             }
         })
         // 判断哪个title显示什么内容
-        const current = computed(() => {
-            // find方法低版本浏览器不支持
-            return defaults.find(tag => tag.props.title === props.selected)
-        })
-        // 获取到所有传递过来的子组件的title
-        const titles = defaults.map((tag) => {
-            return tag.props.title
-        })
-        // 点击之后更改title
-        const select = (title: string) => {
-            context.emit('update:selected', title)
-        }
-        return {
-            select,
-            titles,
-            current,
-            defaults,
-            selectedItem,
-            indicator,
-            container
-        }
+     export const current = computed(() => {
+         // find方法低版本浏览器不支持
+         return defaults.find(tag => tag.props.title === props.selected)
+     })
+     // 获取到所有传递过来的子组件的title
+    export const titles = defaults.map((tag) => {
+         return tag.props.title
+     })
+     // 点击之后更改title
+    export const select = (title: string) => {
+         context.emit('update:selected', title)
+     }
+       
 
-    }
+    
 
-}
 </script>
 
 <style lang="scss">

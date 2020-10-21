@@ -3,8 +3,8 @@
 </demo>
 <template>
 <div>
-    <zuiMengButton loading>加载中</zuiMengButton>
-    <zuiMengButton>加载完毕</zuiMengButton>
+    <zuiMengButton  loading>加载中</zuiMengButton>
+    <zuiMengButton >加载完毕</zuiMengButton>
 </div>
 </template>
 

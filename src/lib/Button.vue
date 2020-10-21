@@ -5,11 +5,19 @@
 </button>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup='props,context'>
 import {
-    computed
+    computed,
+    SetupContext
 } from "vue";
-
+declare const props: {
+  theme: boolean;
+  level: boolean; 
+  disabled: String; 
+  loading: boolean;
+  size:String
+}
+declare const context: SetupContext
 export default {
     props: {
         theme: {
@@ -34,29 +42,24 @@ export default {
             default: false
         }
     },
-    setup(props, context) {
+}
         // 从props中拿到自己想要的参数
-        const {
+    export const {
             theme,
             size,
-            level
+            level,
+            loading
         } = props;
 
         // 书写计算属性
         // 这是vue3.0中新的语法
-        const classes = computed(() => {
+    export const classes = computed(() => {
             return {
                 [`zuimeng-theme-${theme}`]: theme,
                 [`zuimeng-size-${size}`]: size,
                 [`zuimeng-level-${level}`]: level,
             };
         })
-        return {
-            classes
-        }
-    },
-
-}
 </script>
 
 <style lang="scss">
@@ -68,6 +71,8 @@ $radius: 4px;
 $red: red;
 $grey: grey;
 $yellow: #e3af00;
+$black: #000;
+
 
 .zuimeng-button {
     box-sizing: border-box;
@@ -106,8 +111,6 @@ $yellow: #e3af00;
     &.zuimeng-theme-link {
         border-color: transparent;
         box-shadow: none;
-        color: $blue;
-
         &:hover,
         &:focus {
             color: lighten($blue, 10%);
@@ -142,7 +145,6 @@ $yellow: #e3af00;
             background: $blue;
             color: white;
             border-color: $blue;
-
             &:hover,
             &:focus {
                 background: darken($blue, 10%);
@@ -176,18 +178,22 @@ $yellow: #e3af00;
     }
 
     &.zuimeng-theme-link {
+          &.zuimeng-level-main {
+            color: $blue;
+            &:hover,
+            &:focus {
+                color: darken($blue, 10%);
+            }
+        }
         &.zuimeng-level-danger {
             color: $red;
-
             &:hover,
             &:focus {
                 color: darken($red, 10%);
             }
         }
-
         &.zuimeng-level-waring {
             color: $yellow;
-
             &:hover,
             &:focus {
                 color: darken($yellow, 10%);
