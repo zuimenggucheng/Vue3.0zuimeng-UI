@@ -12,8 +12,8 @@
                     <slot name="content" />
                 </main>
                 <footer>
-                    <zuiMengButton level="main" @click="saveClick">保存</zuiMengButton>
-                    <zuiMengButton @click="cancelClick">取消</zuiMengButton>
+          <zuiMengButton level="main" @click="saveClick">保存</zuiMengButton>
+          <zuiMengButton @click="cancelClick">取消</zuiMengButton>
                 </footer>
             </div>
         </div>
@@ -53,7 +53,7 @@ export default {
         },
         width: {
             type: String,
-            default: 50
+            default: '50'
         }
     },
     watch: {
@@ -93,11 +93,11 @@ $radius: 4px;
 $border-color: #d9d9d9;
 
 .zuimeng-dialog {
+    width: 100%;
+     height: 100%;
     background: white;
     border-radius: $radius;
     box-shadow: 0 0 3px fade_out(black, 0.5);
-    min-width: 15em;
-    max-width: 90%;
 
     &-overlay {
         position: fixed;
@@ -113,11 +113,14 @@ $border-color: #d9d9d9;
         position: fixed;
         left: 50%;
         top: 50%;
+        width: 50%;
+        height: 40%;
         transform: translate(-50%, -50%);
         z-index: 11;
     }
 
     >header {
+        width: 100%;
         padding: 12px 16px;
         border-bottom: 1px solid $border-color;
         display: flex;
@@ -127,13 +130,17 @@ $border-color: #d9d9d9;
     }
 
     >main {
+        width: 100%;
         padding: 12px 16px;
     }
 
     >footer {
+        width: 100%;
         border-top: 1px solid $border-color;
         padding: 12px 16px;
         text-align: right;
+        position: absolute;
+        bottom: 5%;
     }
 
     &-close {

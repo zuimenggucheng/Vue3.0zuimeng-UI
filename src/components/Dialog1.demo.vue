@@ -4,13 +4,13 @@
 <template>
 <div>
     <zuiMengButton @click="toggle">打开对话框</zuiMengButton>
-    <zuiMengDialog v-model:visible="x" :closeOnClickOverlay="false" :save="f1" :cancel="f2">
+    <zuiMengDialog v-model:visible="x" :closeOnClickOverlay="false" :save="f1" :cancel="f2"  >
         <template v-slot:content>
-            <strong>hi</strong>
-            <div>hi2</div>
+            <strong>hi word</strong>
+            <div>你好啊世界</div>
         </template>
         <template v-slot:title>
-            <strong>加粗的标题</strong>
+           这个是一个弹出框
         </template>
     </zuiMengDialog>
 </div>
