@@ -13,7 +13,8 @@ import {
 } from '../lib/index'
 import {
     ref,
-    h
+    h,
+    render
 } from 'vue'
 import {
     openZuiMengDialog
@@ -27,12 +28,24 @@ export default {
             openZuiMengDialog({
                 title: h('strong', {}, '标题'),
                 content: '你好',
-                ok() {
+                footer: h('div',{
 
                 },
-                cancel() {
-
+                [
+                    h(zuiMengButton,{
+                'onClick': ()=>{
+                      zuiMengClose();
+                },
+                theme:"button",
+                 level:"main",
+            },'确定'),
+                      h(zuiMengButton,{
+                'onClick': (a)=>{
+                 zuiMengClose();
                 }
+                      },'取消'),
+                ]
+                )
             })
         }
         return {

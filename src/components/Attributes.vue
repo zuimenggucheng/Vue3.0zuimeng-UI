@@ -1,6 +1,6 @@
 <template>
   <div class="zuimeng-attr">
-    <h2>Attributes</h2>
+    <h2>{{title}}</h2>
     <table class="attr-table">
       <thead>
       <tr>
@@ -25,6 +25,10 @@ export default {
     },
     data: {
       type: Object
+    },
+      title: {
+      type: String,
+      default: 'Attributes'
     }
   },
 }

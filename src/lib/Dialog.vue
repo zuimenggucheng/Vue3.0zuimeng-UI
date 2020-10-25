@@ -12,8 +12,8 @@
                     <slot name="content" />
                 </main>
                 <footer>
-          <zuiMengButton level="main" @click="saveClick">保存</zuiMengButton>
-          <zuiMengButton @click="cancelClick">取消</zuiMengButton>
+                   <slot name="footer" />
+          
                 </footer>
             </div>
         </div>
@@ -26,8 +26,6 @@ import {zuiMengButton} from './index'
 declare const props: {
   visible: boolean;
   closeOnClickOverlay: boolean; 
-  save: () => boolean; 
-  cancel: () => void;
   width:String
 }
 declare const context: SetupContext
@@ -44,12 +42,6 @@ export default {
         closeOnClickOverlay: {
             type: Boolean,
             default: true
-        },
-        save: {
-            type: Function
-        },
-        cancel: {
-            type: Function
         },
         width: {
             type: String,
@@ -74,16 +66,6 @@ export default {
             if (props.closeOnClickOverlay) {
                 close()
             }
-        }
-    export const saveClick = () => {
-            if (props.save?.() !== false) {
-                close()
-            }
-        }
-    export const cancelClick = () => {
-            // 新写法如果cancel函数存在则调用不存在就不调用
-            props.cancel?.()
-            close()
         }
      
 </script>

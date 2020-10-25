@@ -12,18 +12,21 @@
         <template v-slot:title>
            这个是一个弹出框
         </template>
+         <template v-slot:footer>
+         <zuiMengButton theme="button" level="main" @click="toggle">确认</zuiMengButton>
+         <zuiMengButton @click="toggle" >取消</zuiMengButton>
+        </template>
     </zuiMengDialog>
 </div>
 </template>
 
 <script lang="ts">
 import {
-    zuiMengDialog
+    zuiMengDialog,zuiMengButton
+
 }
 from '../lib/index'
-import {
-    zuiMengButton
-} from '../lib/index'
+
 import {
     ref
 } from 'vue'
